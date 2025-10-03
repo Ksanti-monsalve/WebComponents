@@ -71,4 +71,7 @@ export class WorkComponent extends HTMLElement {
 
 customElements.define("work-component", WorkComponent);
 
-customElements.define("work-component", WorkComponent);
+
+
+
+

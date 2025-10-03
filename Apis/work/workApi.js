@@ -2,25 +2,26 @@ const URL_API = "http://25.0.237.35:3000";
 const myHeaders = new Headers({
     "Content-Type": "application/json"
 });
-const getWork = async() => {
+
+// Cambia getWorks para aceptar una ruta
+const getWorks = async (ruta) => {
     try {
-        const respuesta = await fetch(`${URL_API}/works`);
-		// Si la respuesta es correcta
-		if(respuesta.status === 200){
-			const datos = await respuesta.json();
-		} else if(respuesta.status === 401){
+        const respuesta = await fetch(`${URL_API}/${ruta}`);
+        if (respuesta.status === 200) {
+            return respuesta; // Devuelve la respuesta para que el componente la use
+        } else if (respuesta.status === 401) {
             console.log('La url no es correcta');
-		} else if(respuesta.status === 404){
-            console.log('El el Worko  no existe');
-		} else {
-            console.log('Se presento un error en la peticion consulte al Administrador');
-		} 
-	} catch(error){
+        } else if (respuesta.status === 404) {
+            console.log('El recurso no existe');
+        } else {
+            console.log('Se presentó un error en la petición, consulte al Administrador');
+        }
+    } catch (error) {
         console.log(error);
-	}
-    
+    }
 }
-const postWork = async (datos,ruta) => {
+
+const postWork = async (datos, ruta) => {
     try {
         return await fetch(`${URL_API}/${ruta}`, {
             method: "POST",
@@ -31,8 +32,8 @@ const postWork = async (datos,ruta) => {
         console.error('Error en la solicitud POST:', error.message);
     }
 }
-const patchWork = async (datos,ruta,id) =>{
 
+const patchWork = async (datos, ruta, id) => {
     try {
         return await fetch(`${URL_API}/${ruta}/${id}`, {
             method: "PATCH",
@@ -40,24 +41,23 @@ const patchWork = async (datos,ruta,id) =>{
             body: JSON.stringify(datos)
         });
     } catch (error) {
-        console.error('Error en la solicitud POST:', error.message);
+        console.error('Error en la solicitud PATCH:', error.message);
     }
-
 }
-const deleteWork = async (id) =>{
 
+const deleteWork = async (id) => {
     try {
         return await fetch(`${URL_API}/works/${id}`, {
             method: "DELETE",
             headers: myHeaders,
         });
     } catch (error) {
-        console.error('Error en la solicitud POST:', error.message);
+        console.error('Error en la solicitud DELETE:', error.message);
     }
-
 }
+
 export {
-    getWork as getWorks,
+    getWorks,
     postWork as postWorks,
     patchWork as patchWorks,
     deleteWork as deleteWorks

@@ -8,27 +8,29 @@ export class CiudadWork extends HTMLElement {
 
   async render() {
     this.innerHTML = /* html */ `
-      <h3>Registrar ciudad</h3>
-      <form id="ciudadForm">
-        <div class="mb-3">
-          <label for="nombreCiudad" class="form-label">Nombre de la ciudad</label>
-          <input type="text" id="nombreCiudad" class="form-control" placeholder="Ej: Medellín" required />
+      <div class="card shadow-sm mx-auto mt-5" style="max-width: 500px; border-radius: 18px;">
+        <div class="card-body">
+          <h3 class="card-title text-center text-primary mb-4" style="font-weight: bold;">Registrar Ciudad</h3>
+          <form id="ciudadForm">
+            <div class="mb-4">
+              <label for="nombreCiudad" class="form-label fw-semibold">Nombre de la ciudad</label>
+              <input type="text" id="nombreCiudad" class="form-control" placeholder="Ej: Medellín" required style="border-radius: 10px;"/>
+            </div>
+            <div class="mb-4">
+              <label for="regionSelect" class="form-label fw-semibold">Región</label>
+              <select id="regionSelect" class="form-select" required style="border-radius: 10px;">
+                <option value="">-- Selecciona una región --</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2" style="border-radius: 10px; font-weight: bold;">Guardar</button>
+          </form>
+          <div id="mensajeCiudad" class="mt-3"></div>
         </div>
-        <div class="mb-3">
-          <label for="regionSelect" class="form-label">Región</label>
-          <select id="regionSelect" class="form-select" required>
-            <option value="">-- Selecciona una región --</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-      </form>
-      <div id="mensajeCiudad" class="mt-3"></div>
+      </div>
     `;
 
-    // cargar regiones en el select
     await this.cargarRegiones();
 
-    // evento submit
     this.querySelector("#ciudadForm").addEventListener("submit", async (e) => {
       e.preventDefault();
 
@@ -59,10 +61,10 @@ export class CiudadWork extends HTMLElement {
 
   async cargarRegiones() {
     try {
-      const response = await fetch("http://localhost:3000/regions");
+      const response = await getWorks("regions");
       const regiones = await response.json();
       const select = this.querySelector("#regionSelect");
- 
+
       regiones.forEach(r => {
         const option = document.createElement("option");
         option.value = r.id;

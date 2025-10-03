@@ -1,4 +1,4 @@
-import { postWorks } from "../../../Apis/work/workApi.js";
+import { postWorks, getWorks } from "../../../Apis/work/workApi.js";
 
 export class CompaniaWork extends HTMLElement {
   constructor() {
@@ -8,34 +8,37 @@ export class CompaniaWork extends HTMLElement {
 
   async render() {
     this.innerHTML = /* html */ `
-    
-      <h3>Registrar Compañía</h3>
-      <form id="companiaForm">
-        <div class="mb-3">
-          <label for="nombreCompania" class="form-label">Nombre de la Compañía</label>
-          <input type="text" id="nombreCompania" class="form-control" placeholder="Ej: ACME S.A." required />
+      <div class="card shadow-sm mx-auto mt-5" style="max-width: 500px; border-radius: 18px;">
+        <div class="card-body">
+          <h3 class="card-title text-center text-primary mb-4" style="font-weight: bold;">Registrar Compañía</h3>
+          <form id="companiaForm">
+            <div class="mb-4">
+              <label for="nombreCompania" class="form-label fw-semibold">Nombre de la Compañía</label>
+              <input type="text" id="nombreCompania" class="form-control" placeholder="Ej: ACME S.A." required style="border-radius: 10px;"/>
+            </div>
+            <div class="mb-4">
+              <label for="ukNiu" class="form-label fw-semibold">Niu</label>
+              <input type="text" id="ukNiu" class="form-control" placeholder="Ej: 123456789" required style="border-radius: 10px;"/>
+            </div>
+            <div class="mb-4">
+              <label for="direccionCompania" class="form-label fw-semibold">Dirección</label>
+              <input type="text" id="direccionCompania" class="form-control" placeholder="Ej: Calle 123 #45-67" required style="border-radius: 10px;"/>
+            </div>
+            <div class="mb-4">
+              <label for="ciudadSelect" class="form-label fw-semibold">Ciudad</label>
+              <select id="ciudadSelect" class="form-select" required style="border-radius: 10px;">
+                <option value="">-- Selecciona una ciudad --</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label for="emailCompania" class="form-label fw-semibold">Email</label>
+              <input type="email" id="emailCompania" class="form-control" placeholder="Ej: contacto@acme.com" required style="border-radius: 10px;"/>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2" style="border-radius: 10px; font-weight: bold;">Guardar</button>
+          </form>
+          <div id="mensajeCompania" class="mt-3"></div>
         </div>
-        <div class="mb-3">
-          <label for="ukNiu" class="form-label">Niu</label>
-          <input type="text" id="ukNiu" class="form-control" placeholder="Ej: 123456789" required />
-        </div>
-        <div class="mb-3">
-          <label for="direccionCompania" class="form-label">Dirección</label>
-          <input type="text" id="direccionCompania" class="form-control" placeholder="Ej: Calle 123 #45-67" required />
-        </div>
-        <div class="mb-3">
-          <label for="ciudadSelect" class="form-label">Ciudad</label>
-          <select id="ciudadSelect" class="form-select" required>
-            <option value="">-- Selecciona una ciudad --</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="emailCompania" class="form-label">Email</label>
-          <input type="email" id="emailCompania" class="form-control" placeholder="Ej: contacto@acme.com" required />
-        </div>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-      </form>
-      <div id="mensajeCompania" class="mt-3"></div>
+      </div>
     `;
 
     await this.cargarCiudades();
@@ -79,7 +82,7 @@ export class CompaniaWork extends HTMLElement {
 
   async cargarCiudades() {
     try {
-      const response = await fetch("http://25.0.237.35:3000/cities");
+      const response = await getWorks("cities");
       const ciudades = await response.json();
       const select = this.querySelector("#ciudadSelect");
 
