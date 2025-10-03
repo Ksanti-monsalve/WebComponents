@@ -78,7 +78,8 @@ WebComponents/
 
 1. **Clona el repositorio**  
    ```
-   git clone <url-del-repo>
+   https://github.com/Ksanti-monsalve/WebComponents.git
+   
    ```
 
 2. **Instala dependencias**  
@@ -109,7 +110,8 @@ Puedes modificar los estilos en los componentes para adaptarlos a tus necesidade
 
 ## Créditos
 
-Desarrollado por Kevin Santiago Pinto Monsalve
+Desarrollado por Kevin Santiago Pinto Monsalve.
+
 Basado en Web Components y Bootstrap 5.
 
 ---
