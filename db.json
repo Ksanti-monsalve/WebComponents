@@ -1,0 +1,97 @@
+{
+  "countries": [
+    {
+      "name": "Colombiana",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "México"
+    },
+    {
+      "name": "venezuela",
+      "id": 3
+    },
+    {
+      "name": "chile",
+      "id": 5
+    },
+    {
+      "name": "Colombian",
+      "id": 6
+    },
+    {
+      "name": "Colombiana",
+      "id": 7
+    }
+  ],
+  "regions": [
+    {
+      "name": "santander",
+      "CountryId": 1,
+      "id": 1
+    },
+    {
+      "name": "norte de santander",
+      "CountryId": 1,
+      "id": 2
+    },
+    {
+      "name": "merida",
+      "CountryId": 3,
+      "id": 3
+    }
+  ],
+  "cities": [
+    {
+      "id": 1,
+      "name": "Bogotá",
+      "RegionId": 1
+    },
+    {
+      "id": 2,
+      "name": "Guadalajara",
+      "RegionId": 2
+    }
+  ],
+  "companies": [
+    {
+      "id": 1,
+      "name": "OpenAI S.A.S.",
+      "niu": "123456",
+      "CityId": 1,
+      "adress": "Cra 10 #20-30",
+      "email": "contacto@openai.co"
+    },
+    {
+      "name": "Atento",
+      "UKNiu": "121212",
+      "address": "parque simon bolivar",
+      "CityId": 1,
+      "email": "skjahkskjxahs@skdj.com",
+      "id": 2
+    }
+  ],
+  "branches": [
+    {
+      "id": 1,
+      "number_Comercial": "Sucursal Norte",
+      "niu": "BR001",
+      "Contact_name": "Juan Pérez",
+      "adress": "Av 68 #45-12",
+      "email": "norte@openai.co",
+      "phone": "3101234567",
+      "cityId": 1,
+      "CompanyId": 1
+    },
+    {
+      "name": "qweqwd",
+      "numberComercial": "51321312",
+      "email": "asdasd@hvasx",
+      "phone": "26520620",
+      "contact_name": "asxasd",
+      "CompanyId": 1,
+      "id":2
+    }
+    ]
+}

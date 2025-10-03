@@ -8,6 +8,7 @@ export class CompaniaWork extends HTMLElement {
 
   async render() {
     this.innerHTML = /* html */ `
+    
       <h3>Registrar Compañía</h3>
       <form id="companiaForm">
         <div class="mb-3">
